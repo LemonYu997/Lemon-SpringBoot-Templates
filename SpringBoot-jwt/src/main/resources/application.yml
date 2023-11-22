@@ -1,0 +1,27 @@
+# Server settings
+server:
+  port: 8080
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    password:
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&nullCatalogMeansCurrent=true&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+# MyBatis-Plus配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  type-aliases-package: com.lemon.mapper
+  configuration:
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+
+jwt:
+  # key的大小必须大于等于 256 bits
+  secret: lemonjwtlemonjwtlemonjwtlemonjwt
+  expiration: 86400000
