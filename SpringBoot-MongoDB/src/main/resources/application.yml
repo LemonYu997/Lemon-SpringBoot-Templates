@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      # 主机地址
+      host: localhost
+      # 数据库
+      database: test
+      # 默认端口号
+      port: 27017
+      username: root
+      password: root
+      # uri写法
+#      uri: mongodb://root:root@localhost:27017/test
