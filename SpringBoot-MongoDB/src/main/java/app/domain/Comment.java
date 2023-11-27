@@ -16,7 +16,7 @@ import java.util.Date;
  * 若未加@Document，该bean save 到mongo的 comment collection
  * 若添加@Document，则save到 comment collection
  */
-@Document(collation = "comment")    //省略时，根据类名小写映射到集合
+@Document("comment")    //省略时，根据类名小写映射到集合
 //@CompoundIndex(def = "{'userid': 1, 'nickname': -1}") //复合索引，写法同mongodb
 public class Comment implements Serializable {
     //主键标识，自动对应mongodb的主键字段“_id”
@@ -33,6 +33,20 @@ public class Comment implements Serializable {
     private Integer likenum;
     private String state;
     private String articleid;
+
+    public Comment() {
+    }
+
+    public Comment(String id, String content, LocalDateTime createdatetime, String userid, String nickname, Integer likenum, String state, String articleid) {
+        this.id = id;
+        this.content = content;
+        this.createdatetime = createdatetime;
+        this.userid = userid;
+        this.nickname = nickname;
+        this.likenum = likenum;
+        this.state = state;
+        this.articleid = articleid;
+    }
 
     @Override
     public String toString() {

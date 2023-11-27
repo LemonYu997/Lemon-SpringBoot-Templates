@@ -18,6 +18,21 @@ public class CommentServiceTest {
     @Test
     public void findCommentList() {
         List<Comment> commentList = commentService.findCommentList();
-        System.out.println(commentList);
+        for (Comment comment : commentList) {
+            System.out.println(comment);
+        }
+    }
+
+    @Test
+    public void findCommentByLikenum() {
+        List<Comment> comments = commentService.findCommentByLikenum();
+        for (Comment comment : comments) {
+            System.out.println(comment);
+        }
+    }
+
+    @Test
+    public void updateCommentByLikenum() {
+        commentService.updateCommentByLikenum();
     }
 }
