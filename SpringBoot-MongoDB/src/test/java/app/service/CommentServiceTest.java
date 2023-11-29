@@ -35,4 +35,15 @@ public class CommentServiceTest {
     public void updateCommentByLikenum() {
         commentService.updateCommentByLikenum();
     }
+
+    @Test
+    public void findCommentSelect() {
+//        List<Comment> comments = commentService.findCommentSelect(null, "1003");
+//        List<Comment> comments = commentService.findCommentSelect("100001", null);
+        List<Comment> comments = commentService.findCommentSelect("10001", "1003");
+
+        for (Comment comment : comments) {
+            System.out.println(comment);
+        }
+    }
 }

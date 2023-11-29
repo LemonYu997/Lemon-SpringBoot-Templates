@@ -35,7 +35,10 @@ public class CommentService {
 
     //查询所有评论
     public List<Comment> findCommentList() {
-        return commentDao.findAll();
+        Query query = new Query();
+        //查询指定字段，只查id
+        query.fields().include("_id");
+        return mongoTemplate.find(query, Comment.class);
     }
 
     //根据id查询评论
@@ -57,6 +60,20 @@ public class CommentService {
         Update update = new Update();
         update.set("nickname", "很多喜欢");
         mongoTemplate.updateMulti(query, update, Comment.class);
+    }
+
+    //可选条件查询
+    public List<Comment> findCommentSelect(String articleid, String userid) {
+        Query query = new Query();
+        if (articleid != null) {
+            query.addCriteria(Criteria.where("articleid").is(articleid));
+        }
+        if (userid != null) {
+            query.addCriteria(Criteria.where("userid").is(userid));
+        }
+
+
+        return mongoTemplate.find(query, Comment.class);
     }
 }
 
