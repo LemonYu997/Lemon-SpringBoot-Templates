@@ -29,6 +29,13 @@ public class UserController {
         return SaResult.ok("当前会话是否登录：" + StpUtil.isLogin());
     }
 
+    // 校验登录状态，浏览器访问： http://localhost:8081/user/checkLogin
+    @RequestMapping("/checkLogin")
+    public SaResult checkLogin() {
+        StpUtil.checkLogin();
+        return SaResult.ok("校验登录状态");
+    }
+
     // 查询 Token 信息  ---- http://localhost:8081/user/tokenInfo
     @RequestMapping("tokenInfo")
     public SaResult tokenInfo() {
